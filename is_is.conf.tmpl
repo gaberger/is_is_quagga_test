@@ -1,0 +1,43 @@
+! -*- isis -*-
+!
+! ISISd sample configuration file
+!
+hostname {{IS_IS_HOSTNAME}}
+password foo
+enable password foo
+log stdout
+log file {{IS_IS_LOG_FILE}}
+!
+!
+router isis DEAD
+  net 49.{{IS_IS_DEAD_AREA}}.{{IS_IS_DEAD_ROUTER_ADDRESS}}.00
+  is-type level-1
+!
+router isis BEEF
+  net 49.{{IS_IS_BEEF_AREA}}.{{IS_IS_BEEF_ROUTER_ADDRESS}}.00
+  is-type level-1
+!  -- set the lifetime either for level-1, level-2 or both
+!  lsp-lifetime level-1 65535
+!  lsp-lifetime level-2 65535
+!  lsp-lifetime 65535
+!area-password foobar
+!domain-password foobar
+interface {{DEAD_INTERFACE}}
+ ip router isis DEAD
+ isis hello-interval 5
+! isis lsp-interval 1000
+interface {{BEEF_INTERFACE}}
+ ip router isis BEEF
+ isis hello-interval 5
+! isis lsp-interval 1000
+! -- optional
+! -- optional
+! isis circuit-type level-1
+! isis password lallaa level-1
+! isis metric 1 level-1
+! isis csnp-interval 5 level-1
+! isis retransmit-interval 10
+! isis retransmit-throttle-interval
+! isis hello-multiplier 2 level-1
+! isis priority 64
+!

@@ -1,0 +1,3 @@
+export NUMBER_NODES=3
+export BRIDGE_NAME_PATTERN="eth"
+export EXTERNAL_NAME_PATTERN="bbr"
