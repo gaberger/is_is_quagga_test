@@ -1,0 +1,25 @@
+! Zebra configuration saved from vty
+!   2016/12/08 15:28:44
+!
+hostname {{ZEBRA_HOSTNAME}}
+password zebra
+enable password zebra
+log stdout
+log file {{ZEBRA_LOGFILE}}
+!
+interface eth0
+ description test of desc.
+!
+{{#NODES}}
+interface eth000{{.}}
+ ip address {{.}}.{{.}}.{{.}}.1/24
+!
+{{/NODES}}
+interface lo
+!
+interface sit0
+!
+ip forwarding
+!
+!
+line vty

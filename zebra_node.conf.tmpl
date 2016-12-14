@@ -4,13 +4,17 @@
 hostname {{ZEBRA_HOSTNAME}}
 password zebra
 enable password zebra
+log stdout
+log file {{ZEBRA_LOGFILE}}
 !
 interface eth0
  description test of desc.
 !
-{{#INTERFACES}}
-interface eth{{.}}
- ip address {{.}}.{{.}}.{{.}}.1/24
+interface eth{{ETH_NUM}}
+ ip address {{ADDRESS_NUM}}.{{ADDRESS_NUM}}.{{ADDRESS_NUM}}.2/24
+!
+interface bbr{{ETH_NUM}}
+ ip address {{ADDRESS_NUM}}.{{ADDRESS_NUM}}.{{ADDRESS_NUM}}.1/24
 !
 {{/INTERFACES}}
 interface lo
