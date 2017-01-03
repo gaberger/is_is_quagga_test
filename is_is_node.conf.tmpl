@@ -9,25 +9,23 @@ log stdout
 log file {{IS_IS_LOGFILE}}
 !
 !
-router isis {{NODE}} 
-  net 49.{{NODE}}.{{IS_IS_ROUTER_ADDRESS}}.00
+router isis {{AREA}} 
+  net 49.0{{AREA}}.{{IS_IS_ROUTER_ADDRESS}}.00
   is-type level-1
 !
-router isis BEEF
-  net 49.{{NODE}}.{{IS_IS_ROUTER_ADDRESS}}.00
-  is-type level-1
 !  -- set the lifetime either for level-1, level-2 or both
 !  lsp-lifetime level-1 65535
 !  lsp-lifetime level-2 65535
 !  lsp-lifetime 65535
 !area-password foobar
 !domain-password foobar
-interface eth{{NODE}}
- ip router isis {{NODE}}
+
+interface eth1
+ ip router isis {{ISIS1}}
  isis hello-interval 5
-! isis lsp-interval 1000
-interface bbr{{NODE}}
- ip router isis BEEF
+
+interface eth2
+ ip router isis {{ISIS1}}
  isis hello-interval 5
 !
 ! isis lsp-interval 1000

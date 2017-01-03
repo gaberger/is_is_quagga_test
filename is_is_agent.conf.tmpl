@@ -2,31 +2,33 @@
 !
 ! ISISd sample configuration file
 !
-hostname {{IS_IS_HOSTNAME}}
+hostname {{is_is_hostname}}
 password foo
 enable password foo
 log stdout
-log file {{IS_IS_LOGFILE}}
+log file {{is_is_logfile}}
 !
 !
-{{#NODES}}
+{{#areas}}
 router isis {{.}}
-  net 49.{{.}}.{{IS_IS_ROUTER_ADDRESS}}.00
+  net 49.0{{.}}.{{is_is_router_address}}.00
   is-type level-1
 !
-{{/NODES}}
+{{/areas}}
 !  -- set the lifetime either for level-1, level-2 or both
 !  lsp-lifetime level-1 65535
 !  lsp-lifetime level-2 65535
 !  lsp-lifetime 65535
 !area-password foobar
 !domain-password foobar
-{{#NODES}}
-interface eth{{.}}
- ip router isis {{.}} 
+!
+!
+{{#nodes}}
+interface eth{{eth}}
+ ip router isis {{is_is_instance}} 
  isis hello-interval 5
 !
-{{/NODES}}
+{{/nodes}}
 ! -- optional
 ! -- optional
 ! isis circuit-type level-1

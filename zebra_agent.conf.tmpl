@@ -11,7 +11,7 @@ interface eth0
  description test of desc.
 !
 {{#NODES}}
-interface eth000{{.}}
+interface eth{{.}}
  ip address {{.}}.{{.}}.{{.}}.1/24
 !
 {{/NODES}}

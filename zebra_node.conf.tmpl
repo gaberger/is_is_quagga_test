@@ -10,11 +10,11 @@ log file {{ZEBRA_LOGFILE}}
 interface eth0
  description test of desc.
 !
-interface eth{{ETH_NUM}}
- ip address {{ADDRESS_NUM}}.{{ADDRESS_NUM}}.{{ADDRESS_NUM}}.2/24
+interface eth1
+ ip address {{ADDRESS_ETH1}}.{{ADDRESS_NUM}}.{{ADDRESS_NUM}}.2/24
 !
-interface bbr{{ETH_NUM}}
- ip address {{ADDRESS_NUM}}.{{ADDRESS_NUM}}.{{ADDRESS_NUM}}.1/24
+interface eth2
+ ip address {{ADDRESS_ETH2}}.{{ADDRESS_NUM}}.{{ADDRESS_NUM}}.1/24
 !
 {{/INTERFACES}}
 interface lo
