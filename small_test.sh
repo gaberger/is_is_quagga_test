@@ -1,3 +1,3 @@
-export NUMBER_NODES=10
+export NUMBER_NODES=3
 export BRIDGE_NAME_PATTERN="br-n-"
 export EXTERNAL_NAME_PATTERN="br-e-"

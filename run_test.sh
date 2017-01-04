@@ -135,12 +135,12 @@ action(){
 
             printf -v IS_IS_ROUTER_ADDRESS "1921.6810.%04d" $NUMBER
 
-            # python render_template.py is_is_agent.conf.tmpl $CONF_DIR/isisd.conf \
-            # "{\"is_is_hostname\": \"${IS_IS_HOSTNAME}\", \"is_is_logfile\": \"${IS_IS_LOGFILE}\",
-            #       \"num_areas\": ${NUMBER_NODES}, \"num_nodes\": ${NUMBER_NODES},
-            #       \"is_is_router_address\": \"${IS_IS_ROUTER_ADDRESS}\"}"
+             python render_template.py is_is_agent.conf.tmpl $CONF_DIR/isisd.conf \
+             "{\"is_is_hostname\": \"${IS_IS_HOSTNAME}\", \"is_is_logfile\": \"${IS_IS_LOGFILE}\",
+                   \"num_areas\": ${NUMBER_NODES}, \"num_nodes\": ${NUMBER_NODES},
+                   \"is_is_router_address\": \"${IS_IS_ROUTER_ADDRESS}\"}"
 
-            cat is_is_agent.conf.tmpl | mo > $CONF_DIR/isisd.conf
+            #cat is_is_agent.conf.tmpl | mo > $CONF_DIR/isisd.conf
 
             echo -e "Pushing config file"
             lxc file push --verbose $CONF_DIR/isisd.conf agent/$LXC_DIR/isisd.conf
@@ -263,7 +263,7 @@ cli_action(){
             for i in $NODE_NUM_SEQ; do
                     printf -v NODE_NAME "node%03g" $i
                     echo -e "Creating container for $NODE_NAME ..."
-                   # action create_container $NODE_NAME
+                    action create_container $NODE_NAME
             done
             ;;
         config)
