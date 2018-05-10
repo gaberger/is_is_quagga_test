@@ -10,6 +10,7 @@ Vagrant.configure(2) do |config|
   end
    config.vm.provision "shell", inline: <<-SHELL
      add-apt-repository ppa:ubuntu-lxc/lxd-stable
+     sudo apt install -t xenial-backports lxd lxd-client
      apt update
      apt install -y bridge-utils
      apt install -y git tree
