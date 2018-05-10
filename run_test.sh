@@ -101,7 +101,13 @@ action(){
             ;;
         create_container)
             echo -e "\nCreating lxc container: $2"
-            lxc launch netdev-base $2 || true
+            lxc launch ubuntu:16.04 $2 || true
+            lxc exec $2 wget https://github.com/FRRouting/frr/releases/download/frr-4.0/frr_4.0-1.ubuntu16.04.1_amd64.deb
+            lxc exec $2 wget https://github.com/FRRouting/frr/releases/download/frr-4.0/frr-dbg_4.0-1.ubuntu16.04.1_arm64.deb
+            lxc exec $2 wget https://github.com/FRRouting/frr/releases/download/frr-4.0/frr-pythontools_4.0-1.ubuntu16.04.1_all.deb
+            lxc exec $2 dpkg --install frr_4.0-1.ubuntu16.04.1_amd64.deb
+            lxc exec $2 dpkg --install frr-dbg_4.0-1.ubuntu16.04.1_arm64.deb
+            lxc exec $2 dpkg --install frr-pythontools_4.0-1.ubuntu16.04.1_all.deb
             lxc profile apply $2 $2 || true
             ;;
         create_config_agent)
